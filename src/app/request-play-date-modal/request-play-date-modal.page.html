@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>RequestPlayDateModal</ion-title>
+    <ion-icon name="arrow-round-back" slot="end" (click)="dismiss()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="requestPlaydateReactiveForm" (ngSubmit)="requestPlayDate()">
+      <ion-item>
+        <ion-label class="label" position="stacked">When</ion-label>
+        <ion-input class="input"
+                   type="text"
+                   formControlName="when"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label" position="stacked">Where</ion-label>
+        <ion-input class="input"
+                   type="text"
+                   formControlName="where">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label class="label" position="stacked">Description</ion-label>
+        <ion-input class="input"
+                   type="text"
+                   formControlName="desc">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <!--          routerLink="/profile"-->
+        <ion-button type="submit">SendRequest</ion-button></ion-item>
+    </form>
+</ion-content>

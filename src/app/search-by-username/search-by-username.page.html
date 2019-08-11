@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>SearchByUsername</ion-title>
+    <ion-icon name="arrow-round-back" slot="end" (click)="dismiss()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="userReactiveForm" (ngSubmit)="getUserWithProvidedUsername()" *ngIf="displayform">
+    <ion-item>
+<!--      <ion-label class="label" position="stacked">Email</ion-label>-->
+      <ion-input class="input"
+                 type="text"
+                 formControlName="email"
+                 placeholder="Enter email" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <!--          routerLink="/profile"-->
+      <ion-button type="submit">Submit</ion-button></ion-item>
+  </form>
+
+  <ion-card *ngIf="displayUserDetails">
+    <img src="data:image/jpg;base64,{{imageFileBinary}}" />
+    <ion-card-header>
+      <ion-card-title>Name</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item><ion-label>DOB </ion-label>{{dob}}</ion-item>
+      <ion-item><ion-label>Mother </ion-label>{{mother}}</ion-item>
+      <ion-item><ion-label>Father </ion-label>{{father}}</ion-item>
+      <ion-item><ion-label>Address </ion-label>{{address}}</ion-item>
+      <ion-item><ion-label>Ethnicity </ion-label>{{ethnicity}}</ion-item>
+      <ion-item><ion-label>Allergies </ion-label>{{allergies}}</ion-item>
+      <ion-item><ion-label>Disabilities </ion-label>{{disabilities}}</ion-item>
+    </ion-card-content>
+</ion-card>
+  <ion-button shape="round" (click)="displayUserData()" *ngIf="displayUserDetails">Request Play Date </ion-button>
+
+  <form *ngIf="displayRequestPlayDateForm" [formGroup]="requestPlaydateReactiveForm" (ngSubmit)="sendPlayDateRequest()">
+    <ion-item>
+      <ion-label class="label" position="stacked">When</ion-label>
+      <ion-input class="input"
+                 type="text"
+                 formControlName="when"
+                 placeholder="mm/dd/yyyy"
+                 [ngClass]="{ 'is-invalid': submitted && f.when.errors }" >
+        <div *ngIf="submitted && f.when.errors" class="invalid-feedback">
+          <div *ngIf="f.when.errors.required">enter date</div>
+        </div>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label" position="stacked">Where</ion-label>
+      <ion-input class="input"
+                 type="text"
+                 formControlName="where"
+                 placeholder="enter location of the playdate"
+                 [ngClass]="{ 'is-invalid': submitted && f.where.errors }">
+      </ion-input>
+        <div *ngIf="submitted && f.where.errors" class="invalid-feedback">
+          <div *ngIf="f.where.errors.required">enter the location of playdate</div>
+        </div>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label" position="stacked">Description</ion-label>
+      <ion-input class="input"
+                 type="text"
+                 formControlName="desc"
+                 placeholder="enter description" [ngClass]="{ 'is-invalid': submitted && f.desc.errors }">
+          <div *ngIf="submitted && f.desc.errors" class="invalid-feedback">
+            <div *ngIf="f.desc.errors.required">describe your idea of how you want the playdate to be</div>
+          </div>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <!--          routerLink="/profile"-->
+      <ion-button type="submit">Submit</ion-button></ion-item>
+  </form>
+
+  <ion-text color="secondary" *ngIf=displayMessageInfo>
+    <h1>Play date request sent successfully!!</h1>
+  </ion-text>
+
+</ion-content>

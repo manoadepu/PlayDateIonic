@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>playdates</ion-title>
+    <ion-icon name="contact" slot="end"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-ripple-effect></ion-ripple-effect>
+
+<ion-content fullscreen class="ion-padding">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="searchByUsernameModa()" expand="full" >Search by Username</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="full" (click)="searchNearByModal()">Search Nearby</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="full" (click)="upcomingPlayDatesModal()">Upcoming playdates </ion-button>
+
+<!--<ion-button (click)="()" expand="full" >Search Upcoming playdates Nearby</ion-button>-->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>
+

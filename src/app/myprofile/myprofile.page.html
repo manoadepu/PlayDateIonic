@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+      <img src="data:image/jpg;base64,{{imageFileBinary}}" />
+        <ion-card-header>
+            <form>
+                <ion-input id="myform" type="file" name="file" (click)="postMethod($event.target.files)"></ion-input>
+            </form>
+        <ion-card-title>{{name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item><ion-label>DOB </ion-label>{{dob}}</ion-item>
+        <ion-item><ion-label>Mother </ion-label>{{mother}}</ion-item>
+        <ion-item><ion-label>Father </ion-label>{{father}}</ion-item>
+        <ion-item><ion-label>Address </ion-label>{{address}}</ion-item>
+        <ion-item><ion-label>Ethnicity </ion-label>{{ethnicity}}</ion-item>
+        <ion-item><ion-label>Allergies </ion-label>{{allergies}}</ion-item>
+        <ion-item><ion-label>Disabilities </ion-label>{{disabilities}}</ion-item>
+      </ion-card-content>
+    </ion-card>
+</ion-content>

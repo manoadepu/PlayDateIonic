@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>events</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="eventDetailsReactiveForm" (ngSubmit)="createEvent()">
+    <ion-item>
+      <ion-label class="label" position="stacked">When</ion-label>
+      <ion-input class="input"
+                 type="text"
+                 formControlName="when" [ngClass]="{ 'is-invalid': submitted && getFormControl.when.errors }">
+        <div *ngIf="submitted && getFormControl.when.errors" class="invalid-feedback">
+          <div *ngIf="getFormControl.when.errors.required">Enter When</div>
+        </div>
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="label" position="stacked">Where</ion-label>
+      <ion-input class="input"
+                 type="text"
+                 formControlName="where"
+                 [ngClass]="{ 'is-invalid': submitted && getFormControl.when.errors }"
+      >
+        <div *ngIf="submitted && getFormControl.where.errors" class="invalid-feedback">
+          <div *ngIf="getFormControl.where.errors.required" >Enter where</div>
+        </div>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label class="label" position="stacked">description</ion-label>
+      <ion-input class="input"
+                 type="text"
+                 formControlName="desc"
+                 [ngClass]="{ 'is-invalid': submitted && getFormControl.when.errors }"
+      >
+        <div *ngIf="submitted && getFormControl.desc.errors" class="invalid-feedback">
+          <div *ngIf="getFormControl.desc.errors.required">Enter description for your event?</div>
+        </div>
+      </ion-input>
+
+    </ion-item>
+    <ion-item>
+      <!--          routerLink="/profile"-->
+      <ion-button type="submit">Create</ion-button></ion-item>
+  </form>
+
+
+
+
+
+</ion-content>

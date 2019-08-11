@@ -1,14 +1,28 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>Playdate</ion-title>
+    </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+
+<form [formGroup]="reactiveForm" (ngSubmit)="loginVerification()">
+  <ion-item>
+  <ion-label class="label" position="stacked">Email</ion-label>
+  <ion-input class="input"
+         type="text"
+             formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+  <ion-label class="label" position="stacked">Password</ion-label>
+  <ion-input class="input"
+         type="password"
+             formControlName="password"></ion-input>
+    </ion-item>
+        <ion-item>
+<!--          routerLink="/profile"-->
+          <ion-button type="submit">Submit</ion-button></ion-item>
+</form>
 </ion-content>

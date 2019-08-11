@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>UpcomingPlayDatesModal</ion-title>
+    <ion-icon name="arrow-round-back" slot="end" (click)="dismiss()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list-header>
+    <ion-label>Upcoming PlayDates</ion-label>
+  </ion-list-header>
+  <ion-list>
+    <ion-item *ngFor="let playdateRequestedByOther of playdatesRequestedByOther" >
+<!--        <img src="data:image/jpg;base64,{{playdateRequestedByOther.base64Image}}">-->
+      <img src="_DomSanitizationService.bypassSecurityTrustUrl('data:image/jpg;base64,{{playdateRequestedByOther.base64Image}}')"/>
+      <ion-label>
+        <h2>User:    {{playdateRequestedByOther.requestedBy}}</h2>
+        <h3>When :   {{playdateRequestedByOther.when}}</h3>
+        <h3>Where:   {{playdateRequestedByOther.where}}</h3>
+        <h3>Status:  {{playdateRequestedByOther.status}}</h3>
+        <p>{{playdateRequestedByOther.description}}</p>
+          <ion-button *ngIf="playdateRequestedByOther.status==='REQUESTED'">Accept</ion-button>
+          <ion-button (click)="showUserProfileModal(playdateRequestedByOther.requestedBy)">View Profile{{playdateRequestedByOther.requestedBy}}</ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
