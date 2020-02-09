@@ -9,24 +9,31 @@
   <ion-ripple-effect></ion-ripple-effect>
 
 <ion-content fullscreen class="ion-padding">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-button (click)="searchByUsernameModa()" expand="full" >Search by Username</ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-button expand="full" (click)="searchNearByModal()">Search Nearby</ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-button expand="full" (click)="upcomingPlayDatesModal()">Upcoming playdates </ion-button>
 
-<!--<ion-button (click)="()" expand="full" >Search Upcoming playdates Nearby</ion-button>-->
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+<!--  <ion-chip color="secondary">-->
+<!--    <ion-label color="dark" *ngIf="showStatusOfRequests">Status of Requests</ion-label>-->
+<!--  </ion-chip>-->
+
+  <ion-chip *ngIf="showRequestedPlayDates" color="success">
+    <ion-label color="dark" (click)="requestedPlayDatesModal()">You have new requests</ion-label>
+  </ion-chip>
+
+    <ion-chip *ngIf="showYouHaveNewRequests" color="success">
+        <ion-label color="dark" (click)="playdatesCreatedByUser()">Playdates created</ion-label>
+    </ion-chip>
+
+<h3>Upcoming PlayDates</h3>
+  <ion-item  *ngFor="let upcomingEvent of upcomingEvents" lines="none">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>When: {{upcomingEvent.when}}</ion-card-subtitle>
+      <ion-card-title>Where: {{upcomingEvent.where}}</ion-card-title>
+      <ion-label>Description: {{upcomingEvent.description}}</ion-label>
+    </ion-card-header>
+    <ion-button (click)="viewEventDetails(upcomingEvent.eventGuid)">View Details</ion-button>
+    <ion-button color="danger" (click)="updateStatus(upcomingEvent.eventGuid, 'REQUESTED')">Reject</ion-button>
+    <ion-button color="success" (click)="updateStatus(upcomingEvent.eventGuid, 'MAYBE')">MayBe</ion-button>
+  </ion-card>
+  </ion-item>
+  <ion-item *ngIf= "!showUpcomingPlayDates" lines="none">No Upcoming Playdates</ion-item>
 </ion-content>
-

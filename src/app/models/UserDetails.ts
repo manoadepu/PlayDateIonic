@@ -36,24 +36,31 @@ export interface PlaydatesRequestedByOther {
     base64Image?: any;
 }
 
+export interface Address {
+    street?: string;
+    city?: string;
+    state?: string;
+    zipcode?: string;
+    country?: string;
+}
 export interface UserDetails {
-    id: string;
-    email: string;
-    username: string;
-    password: string;
-    nickName: string;
+    id?: string;
+    email?: string;
+    username?: string;
+    password?: string;
+    nickName?: string;
     allergies?: any;
-    age: string;
-    countryBorn: string;
-    ethnicity: string;
+    age?: string;
+    countryBorn?: string;
+    ethnicity?: string;
     disabilities?: any;
-    dob: string;
-    schoolName: string;
-    address?: any;
-    parentsDetails: ParentsDetails;
-    previousPlayDates: PreviousPlayDate[];
-    imageFileBinary: string;
-    playdatesRequestedByMe: PlaydatesRequestedByMe[];
-    playdatesRequestedByOthers: PlaydatesRequestedByOther[];
+    dob?: string;
+    schoolName?: string;
+    address?: Address;
+    parentsDetails?: ParentsDetails;
+    previousPlayDates?: PreviousPlayDate[];
+    imageFileBinary?: string;
+    playdatesRequestedByMe?: PlaydatesRequestedByMe[];
+    playdatesRequestedByOthers?: PlaydatesRequestedByOther[];
 }
 

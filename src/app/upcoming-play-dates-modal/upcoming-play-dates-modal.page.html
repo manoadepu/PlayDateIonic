@@ -7,21 +7,23 @@
 
 <ion-content>
   <ion-list-header>
-    <ion-label>Upcoming PlayDates</ion-label>
+    <ion-label>Upcoming</ion-label>
   </ion-list-header>
   <ion-list>
-    <ion-item *ngFor="let playdateRequestedByOther of playdatesRequestedByOther" >
-<!--        <img src="data:image/jpg;base64,{{playdateRequestedByOther.base64Image}}">-->
-      <img src="_DomSanitizationService.bypassSecurityTrustUrl('data:image/jpg;base64,{{playdateRequestedByOther.base64Image}}')"/>
+    <ion-item *ngFor="let upcomingEvent of upcomingEvents" >
+<!--        <ion-avatar slot="start">-->
+<!--            <img src="data:image/jpg;base64,{{playdateRequestedByOther.base64Image}}" />-->
+<!--        </ion-avatar>-->
       <ion-label>
-        <h2>User:    {{playdateRequestedByOther.requestedBy}}</h2>
-        <h3>When :   {{playdateRequestedByOther.when}}</h3>
-        <h3>Where:   {{playdateRequestedByOther.where}}</h3>
-        <h3>Status:  {{playdateRequestedByOther.status}}</h3>
-        <p>{{playdateRequestedByOther.description}}</p>
-          <ion-button *ngIf="playdateRequestedByOther.status==='REQUESTED'">Accept</ion-button>
-          <ion-button (click)="showUserProfileModal(playdateRequestedByOther.requestedBy)">View Profile{{playdateRequestedByOther.requestedBy}}</ion-button>
+        <h2>When:    {{upcomingEvent.when}}</h2>
+        <h3>Where:   {{upcomingEvent.where}}</h3>
+        <h4>{{upcomingEvent.description}}</h4>
       </ion-label>
+
+          <ion-button *ngIf="upcomingEvent.status==='REQUESTED'">Accept</ion-button>
+<!--          <ion-button (click)="showUserProfileModal(playdateRequestedByOther.requestedBy)">View Profile{{playdateRequestedByOther.requestedBy}}</ion-button>-->
     </ion-item>
   </ion-list>
+
+
 </ion-content>

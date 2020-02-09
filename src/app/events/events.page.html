@@ -1,15 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>events</ion-title>
+    <ion-title>Events</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <form [formGroup]="eventDetailsReactiveForm" (ngSubmit)="createEvent()">
     <ion-item>
-      <ion-label class="label" position="stacked">When</ion-label>
       <ion-input class="input"
                  type="text"
+                 placeholder="When"
                  formControlName="when" [ngClass]="{ 'is-invalid': submitted && getFormControl.when.errors }">
         <div *ngIf="submitted && getFormControl.when.errors" class="invalid-feedback">
           <div *ngIf="getFormControl.when.errors.required">Enter When</div>
@@ -17,10 +17,10 @@
       </ion-input>
     </ion-item>
     <ion-item>
-      <ion-label class="label" position="stacked">Where</ion-label>
       <ion-input class="input"
                  type="text"
                  formControlName="where"
+                 placeholder="Where"
                  [ngClass]="{ 'is-invalid': submitted && getFormControl.when.errors }"
       >
         <div *ngIf="submitted && getFormControl.where.errors" class="invalid-feedback">
@@ -30,10 +30,10 @@
     </ion-item>
 
     <ion-item>
-      <ion-label class="label" position="stacked">description</ion-label>
       <ion-input class="input"
                  type="text"
                  formControlName="desc"
+                 placeholder="Description"
                  [ngClass]="{ 'is-invalid': submitted && getFormControl.when.errors }"
       >
         <div *ngIf="submitted && getFormControl.desc.errors" class="invalid-feedback">
@@ -42,9 +42,9 @@
       </ion-input>
 
     </ion-item>
-    <ion-item>
+    <ion-item lines="none">
       <!--          routerLink="/profile"-->
-      <ion-button type="submit">Create</ion-button></ion-item>
+      <ion-button class="center" type="submit">Create</ion-button></ion-item>
   </form>
 
 

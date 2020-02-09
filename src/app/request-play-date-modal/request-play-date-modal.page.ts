@@ -47,18 +47,18 @@ export class RequestPlayDateModalPage implements OnInit {
       desc: ['']
     });
   }
-  requestPlayDate() {
-    console.log("NAV PARAMS EMAIL: "+this.navParams.get('email'));
-    console.log("request playdate");
-    this.displayMessageModal();
-    this.playdateInfo.when = this.requestPlaydateReactiveForm.get("when").value;
-    this.playdateInfo.where = this.requestPlaydateReactiveForm.get("where").value;
-    this.playdateInfo.description = this.requestPlaydateReactiveForm.get("desc").value;
-    this.playdateInfo.requestedBy = this.storage.get("sessionemail");
-    this.playdateInfo.requestedTo = this.navParams.get('email');
-
-    this.updatePlaydateInformationService.updatePlayDateInfo(this.playdateInfo);
-  }
+  // requestPlayDate() {
+  //   console.log("NAV PARAMS EMAIL: "+this.navParams.get('email'));
+  //   console.log("request playdate");
+  //   this.displayMessageModal();
+  //   this.playdateInfo.when = this.requestPlaydateReactiveForm.get("when").value;
+  //   this.playdateInfo.where = this.requestPlaydateReactiveForm.get("where").value;
+  //   this.playdateInfo.description = this.requestPlaydateReactiveForm.get("desc").value;
+  //   this.playdateInfo.requestedBy = this.storage.get("sessionemail");
+  //   this.playdateInfo.requestedTo = this.navParams.get('email');
+  //
+  //   this.updatePlaydateInformationService.sendRequest(this.playdateInfo);
+  // }
   dismiss() {
     // using the injected ModalController this page
     // can "dismiss" itself and optionally pass back data

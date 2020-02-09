@@ -4,6 +4,7 @@ import {Observable, throwError} from "rxjs";
 import {UserDetails} from "../../models/UserDetails";
 import {catchError, retry} from "rxjs/operators";
 import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
+import {EndpointsConstantsService} from "../constants/endpoints-constants.service";
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,12 @@ export class ProfileDetailsService {
     })
   }
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,
+              private endpoints: EndpointsConstantsService) {}
 
-  getUserDetails(emailId: string){
-      return this.httpClient.get(this.getUserDetailUrl+emailId);
+  getUserDetails(email: string){
+    console.log("Hitting: "+ this.endpoints.GET_USER_DETAILS+"/"+email);
+      return this.httpClient.get(this.endpoints.GET_USER_DETAILS+"/"+email);
   }
 
   //ErrorHandling

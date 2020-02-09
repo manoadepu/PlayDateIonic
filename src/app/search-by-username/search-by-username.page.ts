@@ -122,7 +122,7 @@ export class SearchByUsernamePage implements OnInit {
     this.playdateInfo.requestedBy = this.storage.get("sessionemail");
     this.playdateInfo.requestedTo = this.requestedTo;
 
-    this.updatePlaydateInformationService.updatePlayDateInfo(this.playdateInfo);
+    // this.updatePlaydateInformationService.sendRequest(this.playdateInfo);
     this.displayRequestPlayDateForm = false;
     this.displayMessageInfo = true;
   }

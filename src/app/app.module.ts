@@ -22,6 +22,11 @@ import {SearchByUsernamePage} from "./search-by-username/search-by-username.page
 import {ShowUserProfileModalPage} from "./show-user-profile-modal/show-user-profile-modal.page";
 import {RequestUserToParticipateInEventModalPage} from "./request-user-to-participate-in-event-modal/request-user-to-participate-in-event-modal.page";
 import {MatAutocompleteModule, MatFormFieldModule, MatInputModule} from "@angular/material";
+import {EditUserDetailsModalPage} from "./modals/edit-user-details-modal/edit-user-details-modal.page";
+import {ShowRequestedPlayDatesModalPage} from "./modals/show-requested-play-dates-modal/show-requested-play-dates-modal.page";
+import {ViewEventDetailsModalPage} from "./modals/view-event-details-modal/view-event-details-modal.page";
+import {ViewParticipantPage} from "./modals/view-participant/view-participant.page";
+import {PlayDatesCreatedByUserPage} from "./modals/play-dates-created-by-user/play-dates-created-by-user.page";
 
 @NgModule({
   declarations: [
@@ -32,7 +37,12 @@ import {MatAutocompleteModule, MatFormFieldModule, MatInputModule} from "@angula
     MessageDisplayModalPage,
     SearchByUsernamePage,
     ShowUserProfileModalPage,
-    RequestUserToParticipateInEventModalPage
+    RequestUserToParticipateInEventModalPage,
+      EditUserDetailsModalPage,
+      ShowRequestedPlayDatesModalPage,
+      ViewEventDetailsModalPage,
+      ViewParticipantPage,
+      PlayDatesCreatedByUserPage
   ],
   entryComponents: [
       RequestPlayDateModalPage,
@@ -41,7 +51,12 @@ import {MatAutocompleteModule, MatFormFieldModule, MatInputModule} from "@angula
       MessageDisplayModalPage,
       SearchByUsernamePage,
       ShowUserProfileModalPage,
-      RequestUserToParticipateInEventModalPage
+      RequestUserToParticipateInEventModalPage,
+      EditUserDetailsModalPage,
+      ShowRequestedPlayDatesModalPage,
+      ViewEventDetailsModalPage,
+      ViewParticipantPage,
+      PlayDatesCreatedByUserPage
   ],
     imports: [
         BrowserModule,

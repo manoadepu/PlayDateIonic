@@ -28,7 +28,7 @@
 
         <ion-col size="1"></ion-col>
         <ion-col size="2">
-            <ion-button type="submit" (click) = sendRequestTo(userDetail.value)>SendRequest</ion-button>
+            <ion-button type="submit" (click) = sendRequest(userDetail.value)>SendRequest</ion-button>
         </ion-col>
         <ion-row>
           <ion-button color="primary" (click)="showNearByUsersinList()">View nearby users</ion-button>
@@ -42,14 +42,14 @@
   <ion-list *ngIf="showNearByUsers">
     <ion-item *ngFor="let nearByUser of nearByusers">
       <ion-avatar slot="start">
-        <img src="./avatar-finn.png">
+        <img src="data:image/jpg;base64,{{nearByUser.imageFileBinary}}" />
       </ion-avatar>
       <ion-label>
         <h2>{{nearByUser.nickName}}</h2>
         <h3>Age: {{nearByUser.age}}</h3>
         <p>School: {{nearByUser.schoolName}}</p>
       </ion-label>
-      <ion-button (click)="sendRequestTo(nearByUser.email)">SendRequest</ion-button>
+      <ion-button (click)="sendRequest(nearByUser.email)">SendRequest</ion-button>
       <ion-button (click)="viewProfile(nearByUser.email)">ViewProfile</ion-button>
     </ion-item>
   </ion-list>

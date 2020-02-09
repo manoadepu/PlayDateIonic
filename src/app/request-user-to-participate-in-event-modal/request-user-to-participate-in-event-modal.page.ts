@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {SearchByUsernamePage} from "../search-by-username/search-by-username.page";
-import {ModalController} from "@ionic/angular";
+import {ModalController, NavParams} from "@ionic/angular";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Observable} from "rxjs";
 import {map,startWith} from "rxjs/operators";
@@ -11,6 +11,7 @@ import {SendRequestToUserService} from "../services/events/sendRequestToUserForE
 import {EndpointsConstantsService} from "../services/constants/endpoints-constants.service";
 import {ShowUserProfileModalPage} from "../show-user-profile-modal/show-user-profile-modal.page";
 import {UpdatePlayDateInformationService} from "../services/updatePlaydateInformation/update-play-date-information.service";
+import {PlayDates} from "../models/PlayDates";
 
 @Component({
   selector: 'app-request-user-to-participate-in-event-modal',
@@ -23,21 +24,24 @@ export class RequestUserToParticipateInEventModalPage implements OnInit {
   title = 'ng-autocomplete';
   userAutoCompleteFormField = new FormControl();
   options: string[];
-  users: string[];
   filteredOptions: Observable<string[]>;
-  userDetail;
   showNearByUsers=false;
   sendRequestPerUser=true;
   nearByusers: UserDetails[];
+  email;
+  eventGuid;
+
   constructor(private modalController: ModalController,
               private fb: FormBuilder,
               private httpClient: HttpClient,
               @Inject(SESSION_STORAGE) private storage: StorageService,
               private sendRequestToUserService: SendRequestToUserService,
               private endpoint: EndpointsConstantsService,
-              private updatePlaydateRequestInfo: UpdatePlayDateInformationService) { }
+              private updatePlaydateRequestInfo: UpdatePlayDateInformationService,
+              private navParams: NavParams) { }
 
   ngOnInit() {
+    console.log("event guid from modal:::::::::   "+this.navParams.get('eventGuid'));
     this.getUsers();
     this.createForm();
 
@@ -57,6 +61,7 @@ export class RequestUserToParticipateInEventModalPage implements OnInit {
   }
 
   dismiss() {
+    window.location.reload();
     this.modalController.dismiss({
       'dismissed': true
     });
@@ -82,13 +87,6 @@ export class RequestUserToParticipateInEventModalPage implements OnInit {
     });
   }
 
-
-  sendRequest(userDetail){
-    console.log("Email entered in the text field:" + userDetail );
-    console.log("SessionEmail:"+ this.storage.get("sessionemail"));
-    this.sendRequestToUserService.sendRequestToUserForEvent(this.storage.get("sessionemail"),userDetail);
-  }
-
   showNearByUsersinList(){
     this.showNearByUsers=true;
     this.sendRequestPerUser=false;
@@ -99,12 +97,8 @@ export class RequestUserToParticipateInEventModalPage implements OnInit {
       console.log("email 1:"+userDetails[0].email);
     });
   }
-
-  sendRequestTo(email){
-    this.httpClient.get("http://localhost:8080/playdate/request/"+this.storage.get(this.endpoint.SESSION_EMAIL)+"/"+email).subscribe((res:Boolean)=>{
-      console.log(res);
-    });
-    this.updatePlaydateRequestInfo.updatePlayDateRequestInfo(this.endpoint.SESSION_EMAIL,email);
+  sendRequest(email){
+    this.updatePlaydateRequestInfo.sendRequest(email, this.navParams.get("eventGuid"));
   }
 
   async viewProfile(email) {

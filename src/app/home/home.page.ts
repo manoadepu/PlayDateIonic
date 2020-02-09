@@ -30,10 +30,10 @@ export class HomePage {
               private loginVerificationService: LoginVerificationService) {
   }
 
-  setSession(userEmail:string){
-    this.storage.set("sessionemail",userEmail);
-    console.log("EMAIL: "+this.storage.get("email"));
-  }
+  // setSession(userEmail:string){
+  //   this.storage.set("sessionemail",userEmail);
+  //   console.log("EMAIL: "+this.storage.get("email"));
+  // }
 
   ngOnInit() {
     this.createForm();
@@ -54,8 +54,9 @@ export class HomePage {
     this.password = this.getPassword();
     console.log(this.password);
 
+    console.log("yo"+this.email+", "+ this.password);
     this.loginVerificationService.loginVerification(this.email, this.password);
-    this.setSession(this.email);
+    // this.setSession(this.email);
     console.log("SESSION EMAIL:  "+this.storage.get("    "));
   }
 

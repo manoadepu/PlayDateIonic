@@ -9,7 +9,7 @@
       <img src="data:image/jpg;base64,{{imageFileBinary}}" />
         <ion-card-header>
             <form>
-                <ion-input id="myform" type="file" name="file" (click)="postMethod($event.target.files)"></ion-input>
+<!--                <ion-input id="myform" type="file" name="file" (click)="postMethod($event.target.files)"></ion-input>-->
             </form>
         <ion-card-title>{{name}}</ion-card-title>
       </ion-card-header>
@@ -22,5 +22,6 @@
         <ion-item><ion-label>Allergies </ion-label>{{allergies}}</ion-item>
         <ion-item><ion-label>Disabilities </ion-label>{{disabilities}}</ion-item>
       </ion-card-content>
-    </ion-card>
+      <ion-button color="light" (click)="editUserDetails()">Edit Details</ion-button>
+  </ion-card>
 </ion-content>

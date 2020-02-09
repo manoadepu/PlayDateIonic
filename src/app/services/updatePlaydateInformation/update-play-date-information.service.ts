@@ -7,20 +7,18 @@ import {EndpointsConstantsService} from "../constants/endpoints-constants.servic
   providedIn: 'root'
 })
 export class UpdatePlayDateInformationService {
-
+eventGuid
   constructor(private httpClient: HttpClient,
-              private constants: EndpointsConstantsService) { }
+              private endpoints: EndpointsConstantsService) { }
 
-  updatePlayDateInfo(playdateInfo: PlayDates){
-    console.log("In update play date information service");
-    this.httpClient.post(this.constants.BASE_URI + this.constants.POST_UPDATE_PLAYDATE_DETAILS, playdateInfo).subscribe((val)=> {
-      console.log(val);
+  sendRequest(email: string, eventGuid: string){
+      this.httpClient.get(this.endpoints.SEND_REQUEST+eventGuid+"/"+email).subscribe((val)=> {
   })
 }
 
   updatePlayDateRequestInfo(requestSentBy: String, requestSentTo){
     console.log("in update play date information service");
     this.httpClient.get("http://localhost:8080/userDetails");
-    this.httpClient.get(this.constants.BASE_URI+this.constants.GET_UPDATE_PLAYDATE_REQUEST_INFO+requestSentBy+"/"+requestSentTo);
+    this.httpClient.get(this.endpoints.BASE_URI+this.endpoints.GET_UPDATE_PLAYDATE_REQUEST_INFO+requestSentBy+"/"+requestSentTo);
   }
 }

@@ -18,7 +18,12 @@ const routes: Routes = [
   { path: 'message-display-modal', loadChildren: './message-display-modal/message-display-modal.module#MessageDisplayModalPageModule' },
   { path: 'show-user-profile-modal', loadChildren: './show-user-profile-modal/show-user-profile-modal.module#ShowUserProfileModalPageModule' },
   { path: 'events', loadChildren: './events/events.module#EventsPageModule' },
-  { path: 'request-user-to-participate-in-event-modal', loadChildren: './request-user-to-participate-in-event-modal/request-user-to-participate-in-event-modal.module#RequestUserToParticipateInEventModalPageModule' },
+  { path: 'request-user-to-participate-in-event-modal', loadChildren: './request-user-to-participate-in-event-modal/request-user-to-participate-in-event-modal.module#RequestUserToParticipateInEventModalPage' },
+  { path: 'edit-user-details-modal', loadChildren: './modals/edit-user-details-modal/edit-user-details-modal.module#EditUserDetailsModalPageModule' },
+  { path: 'show-requested-play-dates-modal', loadChildren: './modals/show-requested-play-dates-modal/show-requested-play-dates-modal.module#ShowRequestedPlayDatesModalPageModule' },
+  { path: 'view-event-details-modal', loadChildren: './modals/view-event-details-modal/view-event-details-modal.module#ViewEventDetailsModalPageModule' },
+  { path: 'view-participant', loadChildren: './modals/view-participant/view-participant.module#ViewParticipantPageModule' },
+  { path: 'play-dates-created-by-user', loadChildren: './modals/play-dates-created-by-user/play-dates-created-by-user.module#PlayDatesCreatedByUserPageModule' },
 ];
 
 @NgModule({
